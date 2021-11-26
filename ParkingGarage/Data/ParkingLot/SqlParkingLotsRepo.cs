@@ -19,19 +19,19 @@ namespace ParkingGarage.Data.ParkingLot
             return _context.ParkingLots.FromSqlRaw(sql).ToList();
         }
 
-        public Models.ParkingLot.ParkingLot GetFreeParkingLotIdByTicketVip()
+        public Models.ParkingLot.ParkingLot GetFreeParkingLotByTicketVip()
         {
             const string sql = "SELECT * FROM parkinglots WHERE Id >= 1 AND Id <= 10 AND LicensePlateId IS NULL";
             return _context.ParkingLots.FromSqlRaw(sql).FirstOrDefault();
         }
 
-        public Models.ParkingLot.ParkingLot GetFreeParkingLotIdByTicketValue()
+        public Models.ParkingLot.ParkingLot GetFreeParkingLotByTicketValue()
         {
             const string sql = "SELECT * FROM parkinglots WHERE Id >= 11 AND Id <= 30 AND LicensePlateId IS NULL";
             return _context.ParkingLots.FromSqlRaw(sql).FirstOrDefault();
         }
 
-        public Models.ParkingLot.ParkingLot GetFreeParkingLotIdByTicketRegular()
+        public Models.ParkingLot.ParkingLot GetFreeParkingLotByTicketRegular()
         {
             const string sql = "SELECT * FROM parkinglots WHERE Id >= 31 AND Id <= 60 AND LicensePlateId IS NULL";
             return _context.ParkingLots.FromSqlRaw(sql).FirstOrDefault();
