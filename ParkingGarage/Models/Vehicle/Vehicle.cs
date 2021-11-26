@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using ParkingGarage.Models.ParkingLot;
-using Vehicle.Ticket;
 
 namespace Vehicle
 {
@@ -8,16 +7,11 @@ namespace Vehicle
     {
         [Key] public int LicensePlateId { get; set; }
 
-        public ITicket Ticket { get; }
+        public Ticket.Ticket Ticket { get; }
 
-
-        private enum EClass
-        {
-            A,
-            B,
-            C
-        }
-    
+        /// <summary>
+        ///     May be: [A, B, C] only.
+        /// </summary>
         public string Class { get; set; }
 
         public int Height { get; set; }
