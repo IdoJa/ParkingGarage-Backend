@@ -42,9 +42,8 @@ namespace ParkingGarage.Controllers
         public ActionResult<Vehicle.Vehicle> CreateVehicle(Vehicle.Vehicle vehicle)
         {
             _vehiclesLogic.CreateVehicle(vehicle);
-
-            return Ok();
-
+            
+            return CreatedAtRoute(nameof(GetVehicleById), new {Id = vehicle.LicensePlateId}, vehicle);
         }
         
     }
