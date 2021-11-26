@@ -26,7 +26,14 @@ namespace ParkingGarage.Controllers
         }
         
         // POST api/vehicle
-       
+        [HttpPost]
+        public ActionResult<Vehicle.Vehicle> CreateVehicle(Vehicle.Vehicle vehicle)
+        {
+            _vehiclesLogic.CreateVehicle(vehicle);
+
+            return Ok();
+
+        }
         
     }
 }
