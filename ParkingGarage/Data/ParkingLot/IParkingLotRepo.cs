@@ -7,11 +7,7 @@ namespace ParkingGarage.Data.ParkingLot
     {
         List<Models.ParkingLot.ParkingLot> GetAllParkingLots();
 
-        Models.ParkingLot.ParkingLot GetFreeParkingLotByTicketVip();
-        
-        Models.ParkingLot.ParkingLot GetFreeParkingLotByTicketValue();
-        
-        Models.ParkingLot.ParkingLot GetFreeParkingLotByTicketRegular();
-        
+        Models.ParkingLot.ParkingLot GetFreeParkingLotByParkingLotsIdLimits(int startId, int endId);
+
     }
 }

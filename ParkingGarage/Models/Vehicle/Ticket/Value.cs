@@ -25,7 +25,7 @@ namespace Vehicle.Ticket
 
         protected override ParkingLot GetFreeParkingLot()
         {
-            return _parkingLotsLogic.GetFreeParkingLotByTicketValue();
+            return _parkingLotsLogic.GetFreeParkingLotByParkingLotsIdLimits(11, 30);
         }
     }
 }
