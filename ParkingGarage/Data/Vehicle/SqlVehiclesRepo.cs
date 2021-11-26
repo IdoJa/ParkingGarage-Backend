@@ -6,9 +6,9 @@ namespace ParkingGarage.Data.Vehicle
 {
     public class SqlVehiclesRepo : IVehicleRepo
     {
-        private readonly VehicleContext _context;
+        private readonly MainContext _context;
 
-        public SqlVehiclesRepo(VehicleContext context)
+        public SqlVehiclesRepo(MainContext context)
         {
             _context = context;
         }

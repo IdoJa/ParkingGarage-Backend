@@ -7,5 +7,4 @@ namespace ParkingGarage.Data.Vehicle
         List<global::Vehicle.Vehicle> GetAllVehicles();
     }
 
-    
 }

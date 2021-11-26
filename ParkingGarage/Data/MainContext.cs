@@ -4,17 +4,13 @@ using ParkingGarage.Models.ParkingLot;
 
 namespace ParkingGarage.Data
 {
-    public class VehicleContext : DbContext
+    public class MainContext : DbContext
     {
-        public VehicleContext(DbContextOptions<VehicleContext> opt) : base(opt)
+        public MainContext(DbContextOptions<MainContext> opt) : base(opt)
         {
-            
         }
-        
 
         public DbSet<global::Vehicle.Vehicle> Vehicles { get; set; }
         public DbSet<Models.ParkingLot.ParkingLot> ParkingLots { get; set; }
-        
-        
     }
 }

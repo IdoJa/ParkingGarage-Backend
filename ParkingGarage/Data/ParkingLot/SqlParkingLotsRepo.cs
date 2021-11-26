@@ -6,9 +6,9 @@ namespace ParkingGarage.Data.ParkingLot
 {
     public class SqlParkingLotsRepo : IParkingLotRepo
     {
-        private readonly ParkingLotContext _context;
+        private readonly MainContext _context;
 
-        public SqlParkingLotsRepo(ParkingLotContext context)
+        public SqlParkingLotsRepo(MainContext context)
         {
             _context = context;
         }
