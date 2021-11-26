@@ -32,12 +32,16 @@ namespace ParkingGarage.BusinessLogic
         // create vehicle
         public void CreateVehicle(Vehicle.Vehicle vehicle)
         {
+            
+            // create ticket
+            
+            
             // check vehicle class
-            var freeParkingLot = vehicle.Ticket.GetFreeParkingLot();
+            var freeParkingLot = CreateTicket(vehicle.Ticket).GetFreeParkingLot();
             if (freeParkingLot == null)
             {
                 // there is no free lot for this ticket type
-                var msg = $"there is no free lot for this ticket type: {nameof(vehicle.Ticket)}";
+                var msg = $"there is no free lot for this ticket type: {vehicle.Ticket}";
                 throw new Exception(msg);
             }
 
