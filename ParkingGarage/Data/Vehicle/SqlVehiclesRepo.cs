@@ -17,6 +17,12 @@ namespace ParkingGarage.Data.Vehicle
             return Context.Vehicles.FromSqlRaw(sql).ToList();
         }
 
+        public global::Vehicle.Vehicle GetVehicleById(int id)
+        {
+            var sql = $"SELECT * FROM vehicles WHERE LicensePlateId={id}";
+            return Context.Vehicles.FromSqlRaw(sql).FirstOrDefault();
+        }
+
         // Create
         public void CreateVehicle(global::Vehicle.Vehicle vehicle)
         {

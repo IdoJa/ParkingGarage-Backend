@@ -17,6 +17,12 @@ namespace ParkingGarage.BusinessLogic
             return _vehicleRepo.GetAllVehicles();
         }
         
+        // get one vehicle
+        public Vehicle.Vehicle GetVehicleById(int id)
+        {
+            return _vehicleRepo.GetVehicleById(id);
+        }
+        
         // create vehicle
         public void CreateVehicle(Vehicle.Vehicle vehicle)
         {

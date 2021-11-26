@@ -20,9 +20,21 @@ namespace ParkingGarage.Controllers
         [HttpGet]
         public ActionResult<List<Vehicle.Vehicle>> GetAllVehicles()
         {
-            var commandItems = _vehiclesLogic.GetAllVehicles();
+            var vehicleItem = _vehiclesLogic.GetAllVehicles();
 
-            return Ok(commandItems);
+            return Ok(vehicleItem);
+        }
+
+        [HttpGet("{id}", Name="GetVehicleById")]
+        public ActionResult<Vehicle.Vehicle> GetVehicleById(int id)
+        {
+            var vehicleItem = _vehiclesLogic.GetVehicleById(id);
+            if (vehicleItem == null)
+            {
+                return NotFound();
+            }
+            
+            return Ok(vehicleItem);
         }
         
         // POST api/vehicle
