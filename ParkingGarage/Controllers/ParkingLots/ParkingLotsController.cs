@@ -26,5 +26,7 @@ namespace ParkingGarage.Controllers.ParkingLot
 
             return Ok(commandItems);
         }
+        
+        
     }
 }

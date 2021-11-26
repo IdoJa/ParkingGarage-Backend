@@ -10,13 +10,14 @@ namespace Vehicle
         public ITicket Ticket { get; }
 
 
-        private enum VehicleType
+        private enum EClass
         {
-            ClassA,
-            ClassB,
-            ClassC
+            A,
+            B,
+            C
         }
-
+    
+        public string Class { get; set; }
 
         public int Height { get; set; }
         public int Width { get; set; }
