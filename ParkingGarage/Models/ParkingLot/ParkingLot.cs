@@ -9,7 +9,7 @@ namespace ParkingGarage.Models.ParkingLot
         public int Id { get; set; }
         
         [ForeignKey("Vehicle")]
-        public int? LicensePlateId { get; set; }
+        public string LicensePlateId { get; set; }
         public Vehicle.Vehicle Vehicle { get; set; }
     }
 }

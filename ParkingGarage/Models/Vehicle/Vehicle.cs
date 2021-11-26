@@ -5,16 +5,18 @@ namespace Vehicle
 {
     public class Vehicle
     {
-        [Key] public int LicensePlateId { get; set; }
+        [Key] public string LicensePlateId { get; set; }
         
         /// <summary>
         ///     May be: [A, B, C] only.
         /// </summary>
+        [MaxLength(10)]
         public string Class { get; set; }
         
         /// <summary>
         ///     May be: [Vip, Value, Regular] only.
         /// </summary>
+        [MaxLength(10)]
         public string Ticket { get; set; }
         
         public int Height { get; set; }

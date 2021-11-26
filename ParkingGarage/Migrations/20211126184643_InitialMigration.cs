@@ -11,9 +11,9 @@ namespace ParkingGarage.Migrations
                 name: "Vehicles",
                 columns: table => new
                 {
-                    LicensePlateId = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Class = table.Column<string>(nullable: true),
+                    LicensePlateId = table.Column<string>(nullable: false),
+                    Class = table.Column<string>(maxLength: 10, nullable: true),
+                    Ticket = table.Column<string>(maxLength: 10, nullable: true),
                     Height = table.Column<int>(nullable: false),
                     Width = table.Column<int>(nullable: false),
                     Length = table.Column<int>(nullable: false)
@@ -29,7 +29,7 @@ namespace ParkingGarage.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    LicensePlateId = table.Column<int>(nullable: true)
+                    LicensePlateId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
