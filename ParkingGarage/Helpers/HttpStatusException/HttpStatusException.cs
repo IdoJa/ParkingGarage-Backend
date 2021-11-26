@@ -1,19 +1,22 @@
 ﻿using System;
 using System.Net;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ParkingGarage.Helpers.HttpStatusException
 {
     public class HttpStatusException : Exception
     {
-        public HttpStatusCode Status { get; private set; }
-        
-        public string Msg { get; }
-
-        public HttpStatusException(HttpStatusCode status, string msg) : base(msg)
+        public HttpStatusException(StatusCodeResult statusCodeResult, [Optional] string msg)
         {
-            Status = status;
+            StatusCodeResult = statusCodeResult;
             Msg = msg;
         }
+
+        public StatusCodeResult StatusCodeResult { get; }
+
+        public string Msg { get; }
     }
 }

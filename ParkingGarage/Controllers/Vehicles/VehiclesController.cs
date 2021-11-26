@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.EntityFrameworkCore;
 using ParkingGarage.BusinessLogic;
 using ParkingGarage.Data.Vehicle;
@@ -28,7 +32,7 @@ namespace ParkingGarage.Controllers
             return Ok(vehicleItem);
         }
 
-        [HttpGet("{id}", Name="GetVehicleById")]
+        [HttpGet("{id}", Name = "GetVehicleById")]
         public ActionResult<Vehicle.Vehicle> GetVehicleById(int id)
         {
             var vehicleItem = _vehiclesLogic.GetVehicleById(id);
@@ -36,27 +40,23 @@ namespace ParkingGarage.Controllers
             {
                 return NotFound();
             }
-            
+
             return Ok(vehicleItem);
         }
-        
+
         // POST api/vehicle
         [HttpPost]
         public ActionResult<Vehicle.Vehicle> CreateVehicle(Vehicle.Vehicle vehicle)
         {
-
             try
             {
                 _vehiclesLogic.CreateVehicle(vehicle);
-            
                 return CreatedAtRoute(nameof(GetVehicleById), new {Id = vehicle.LicensePlateId}, vehicle);
             }
             catch (HttpStatusException e)
             {
-                return StatusCode((int) e.Status, e.Msg);
-                // return NotFound();
+                return StatusCode(e.StatusCodeResult.StatusCode, e.Msg);
             }
         }
-        
     }
 }

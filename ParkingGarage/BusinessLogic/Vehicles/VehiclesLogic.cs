@@ -42,11 +42,7 @@ namespace ParkingGarage.BusinessLogic
             {
                 // there is no free lot for this ticket type
                 var msg = $"there is no free lot for this ticket type: {vehicle.Ticket}";
-                //throw new Exception(msg);
-                
-                //throw new HttpRequestException(msg, Http);
-                throw new HttpStatusException(HttpStatusCode.BadRequest, msg);
-                
+                throw new HttpStatusException(new BadRequestResult(), msg);
             }
 
             _vehicleRepo.CreateVehicle(vehicle);
