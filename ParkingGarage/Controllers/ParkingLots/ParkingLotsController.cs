@@ -12,17 +12,17 @@ namespace ParkingGarage.Controllers.ParkingLot
     
     public class ParkingLotsController : ControllerBase
     {
-        private readonly ParkingLotLogic _parkingLotLogic;
+        private readonly ParkingLotsLogic _parkingLotsLogic;
 
-        public ParkingLotsController(ParkingLotLogic parkingLotLogic)
+        public ParkingLotsController(ParkingLotsLogic parkingLotsLogic)
         {
-            _parkingLotLogic = parkingLotLogic;
+            _parkingLotsLogic = parkingLotsLogic;
         }
         
         [HttpGet]
         public ActionResult<List<Models.ParkingLot.ParkingLot>> GetAllParkingLots()
         {
-            var commandItems = _parkingLotLogic.GetAllParkingLots();
+            var commandItems = _parkingLotsLogic.GetAllParkingLots();
 
             return Ok(commandItems);
         }

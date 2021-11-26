@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using ParkingGarage.Models.ParkingLot;
 using Vehicle.Ticket;
 
 namespace Vehicle
@@ -22,5 +23,6 @@ namespace Vehicle
         public int Height { get; set; }
         public int Width { get; set; }
         public int Length { get; set; }
+        public ParkingLot ParkingLot { get; set; }
     }
 }

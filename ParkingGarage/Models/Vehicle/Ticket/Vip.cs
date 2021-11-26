@@ -5,16 +5,16 @@ namespace Vehicle.Ticket
 {
     public class Vip : ITicket
     {
-        private readonly ParkingLotLogic _parkingLotLogic;
+        private readonly ParkingLotsLogic _parkingLotsLogic;
 
-        public Vip(ParkingLotLogic parkingLotLogic)
+        public Vip(ParkingLotsLogic parkingLotsLogic)
         {
-            _parkingLotLogic = parkingLotLogic;
+            _parkingLotsLogic = parkingLotsLogic;
         }
 
         public ParkingLot GetFreeParkingLot()
         {
-            return _parkingLotLogic.GetFreeParkingLotByTicketVip();
+            return _parkingLotsLogic.GetFreeParkingLotByTicketVip();
         }
     }
 }

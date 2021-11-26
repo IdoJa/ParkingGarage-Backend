@@ -5,16 +5,16 @@ namespace Vehicle.Ticket
 {
     public class Regular : ITicket
     {
-        private readonly ParkingLotLogic _parkingLotLogic;
+        private readonly ParkingLotsLogic _parkingLotsLogic;
 
-        public Regular(ParkingLotLogic parkingLotLogic)
+        public Regular(ParkingLotsLogic parkingLotsLogic)
         {
-            _parkingLotLogic = parkingLotLogic;
+            _parkingLotsLogic = parkingLotsLogic;
         }
 
         public ParkingLot GetFreeParkingLot()
         {
-            return _parkingLotLogic.GetFreeParkingLotByTicketRegular();
+            return _parkingLotsLogic.GetFreeParkingLotByTicketRegular();
         }
     }
 }

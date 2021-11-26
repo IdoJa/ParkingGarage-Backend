@@ -3,11 +3,11 @@ using ParkingGarage.Data.ParkingLot;
 
 namespace ParkingGarage.BusinessLogic.ParkingLot
 {
-    public class ParkingLotLogic
+    public class ParkingLotsLogic
     {
         private readonly IParkingLotRepo _parkingLotRepo;
         
-        public ParkingLotLogic(IParkingLotRepo parkingLotRepo)
+        public ParkingLotsLogic(IParkingLotRepo parkingLotRepo)
         {
             _parkingLotRepo = parkingLotRepo;
         }

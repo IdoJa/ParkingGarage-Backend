@@ -6,25 +6,23 @@ using ParkingGarage.Data.Vehicle;
 
 namespace ParkingGarage.Controllers
 {
-    [Route("api/vehicles")] 
+    [Route("api/vehicles")]
     [ApiController]
-    
     public class VehiclesController : ControllerBase
     {
-        private readonly VehicleLogic _vehicleLogic;
+        private readonly VehiclesLogic _vehiclesLogic;
 
-        public VehiclesController(VehicleLogic vehicleLogic)
+        public VehiclesController(VehiclesLogic vehiclesLogic)
         {
-            _vehicleLogic = vehicleLogic;
+            _vehiclesLogic = vehiclesLogic;
         }
-        
+
         [HttpGet]
         public ActionResult<List<Vehicle.Vehicle>> GetAllVehicles()
         {
-            var commandItems = _vehicleLogic.GetAllVehicles();
+            var commandItems = _vehiclesLogic.GetAllVehicles();
 
             return Ok(commandItems);
         }
-
     }
 }

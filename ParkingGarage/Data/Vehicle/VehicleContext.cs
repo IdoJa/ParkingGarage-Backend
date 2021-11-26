@@ -13,7 +13,7 @@ namespace ParkingGarage.Data
         
 
         public DbSet<global::Vehicle.Vehicle> Vehicles { get; set; }
-        //public DbSet<Models.ParkingLot.ParkingLot> ParkingLots { get; set; }
+        public DbSet<Models.ParkingLot.ParkingLot> ParkingLots { get; set; }
         
         
     }

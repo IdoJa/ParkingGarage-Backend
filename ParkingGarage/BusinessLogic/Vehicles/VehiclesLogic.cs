@@ -3,11 +3,11 @@ using ParkingGarage.Data.Vehicle;
 
 namespace ParkingGarage.BusinessLogic
 {
-    public class VehicleLogic
+    public class VehiclesLogic
     {
         private readonly IVehicleRepo _vehicleRepo;
         
-        public VehicleLogic(IVehicleRepo vehicleRepo)
+        public VehiclesLogic(IVehicleRepo vehicleRepo)
         {
             _vehicleRepo = vehicleRepo;
         }

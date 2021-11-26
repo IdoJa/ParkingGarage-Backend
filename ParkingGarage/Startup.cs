@@ -34,15 +34,15 @@ namespace ParkingGarage
             services.AddDbContext<VehicleContext>(opt =>
                 opt.UseMySql(Configuration.GetConnectionString("Connection")));
             
-            services.AddDbContext<ParkingLotContext>(opt =>
-                            opt.UseMySql(Configuration.GetConnectionString("Connection")));
+            //services.AddDbContext<ParkingLotContext>(opt =>
+            //                opt.UseMySql(Configuration.GetConnectionString("Connection")));
 
             services.AddControllers();
 
-            services.AddScoped<VehicleLogic, VehicleLogic>();
+            services.AddScoped<VehiclesLogic, VehiclesLogic>();
             services.AddScoped<IVehicleRepo, SqlVehiclesRepo>();
             
-            services.AddScoped<ParkingLotLogic, ParkingLotLogic>();
+            services.AddScoped<ParkingLotsLogic, ParkingLotsLogic>();
             services.AddScoped<IParkingLotRepo, SqlParkingLotsRepo>();
         }
 
