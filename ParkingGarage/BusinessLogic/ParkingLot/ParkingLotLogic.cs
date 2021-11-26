@@ -16,5 +16,20 @@ namespace ParkingGarage.BusinessLogic.ParkingLot
         {
             return _parkingLotRepo.GetAllParkingLots();
         }
+
+        public Models.ParkingLot.ParkingLot GetFreeParkingLotIdByTicketVip()
+        {
+            return _parkingLotRepo.GetFreeParkingLotIdByTicketVip();
+        }
+
+        public Models.ParkingLot.ParkingLot GetFreeParkingLotIdByTicketValue()
+        {
+            return _parkingLotRepo.GetFreeParkingLotIdByTicketValue();
+        }
+
+        public Models.ParkingLot.ParkingLot GetFreeParkingLotIdByTicketRegular()
+        {
+            return _parkingLotRepo.GetFreeParkingLotIdByTicketRegular();
+        }
     }
 }
