@@ -5,7 +5,7 @@ namespace Vehicle.Ticket
 {
     public abstract class Ticket
     {
-        public Dimensions.Dimensions Dimensions;
+        public Dimensions.Dimensions Dimensions = new Dimensions.Dimensions();
         public List<string> ClassList;
         public int Cost;
         public string TimeLimit;
