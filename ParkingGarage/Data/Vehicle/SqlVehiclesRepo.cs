@@ -1,23 +1,26 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using ParkingGarage.Data.SharedRepo;
 
 namespace ParkingGarage.Data.Vehicle
 {
-    public class SqlVehiclesRepo : IVehicleRepo
+    public class SqlVehiclesRepo : SharedRepo<global::Vehicle.Vehicle>, IVehicleRepo
     {
-        private readonly MainContext _context;
-
-        public SqlVehiclesRepo(MainContext context)
+        public SqlVehiclesRepo(MainContext context) : base(context)
         {
-            _context = context;
         }
-        
-        // returns list
+
         public List<global::Vehicle.Vehicle> GetAllVehicles()
         {
             const string sql = "SELECT * FROM vehicles";
-            return _context.Vehicles.FromSqlRaw(sql).ToList();
+            return Context.Vehicles.FromSqlRaw(sql).ToList();
+        }
+
+        // Create
+        public void CreateVehicle(global::Vehicle.Vehicle vehicle)
+        {
+            Create(Context.Vehicles, vehicle);
         }
     }
 }

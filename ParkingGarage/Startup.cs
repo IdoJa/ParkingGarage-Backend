@@ -15,7 +15,9 @@ using ParkingGarage.BusinessLogic;
 using ParkingGarage.BusinessLogic.ParkingLot;
 using ParkingGarage.Data;
 using ParkingGarage.Data.ParkingLot;
+using ParkingGarage.Data.SharedRepo;
 using ParkingGarage.Data.Vehicle;
+using ParkingGarage.Models.ParkingLot;
 
 namespace ParkingGarage
 {
@@ -41,7 +43,7 @@ namespace ParkingGarage
 
             services.AddScoped<VehiclesLogic, VehiclesLogic>();
             services.AddScoped<IVehicleRepo, SqlVehiclesRepo>();
-            
+
             services.AddScoped<ParkingLotsLogic, ParkingLotsLogic>();
             services.AddScoped<IParkingLotRepo, SqlParkingLotsRepo>();
         }

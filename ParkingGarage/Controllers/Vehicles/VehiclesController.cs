@@ -24,5 +24,9 @@ namespace ParkingGarage.Controllers
 
             return Ok(commandItems);
         }
+        
+        // POST api/vehicle
+       
+        
     }
 }
