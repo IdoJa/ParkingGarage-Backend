@@ -5,11 +5,11 @@ namespace Vehicle.Ticket
 {
     public abstract class Ticket
     {
-        protected Dimensions.Dimensions Dimensions;
-        protected List<string> ClassList;
-        protected int Cost;
-        protected string TimeLimit;
+        public Dimensions.Dimensions Dimensions;
+        public List<string> ClassList;
+        public int Cost;
+        public string TimeLimit;
         
-        protected abstract ParkingLot GetFreeParkingLot();
+        public abstract ParkingLot GetFreeParkingLot();
     }
 }

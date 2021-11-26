@@ -23,7 +23,7 @@ namespace Vehicle.Ticket
             TimeLimit = "72h";
         }
 
-        protected override ParkingLot GetFreeParkingLot()
+        public override ParkingLot GetFreeParkingLot()
         {
             return _parkingLotsLogic.GetFreeParkingLotByParkingLotsIdLimits(11, 30);
         }
