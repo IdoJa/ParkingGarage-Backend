@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ParkingGarage.BusinessLogic;
 using ParkingGarage.Data.Vehicle;
+using ParkingGarage.Helpers.HttpStatusException;
 
 namespace ParkingGarage.Controllers
 {
@@ -41,9 +44,18 @@ namespace ParkingGarage.Controllers
         [HttpPost]
         public ActionResult<Vehicle.Vehicle> CreateVehicle(Vehicle.Vehicle vehicle)
         {
-            _vehiclesLogic.CreateVehicle(vehicle);
+
+            try
+            {
+                _vehiclesLogic.CreateVehicle(vehicle);
             
-            return CreatedAtRoute(nameof(GetVehicleById), new {Id = vehicle.LicensePlateId}, vehicle);
+                return CreatedAtRoute(nameof(GetVehicleById), new {Id = vehicle.LicensePlateId}, vehicle);
+            }
+            catch (HttpStatusException e)
+            {
+                return StatusCode((int) e.Status, e.Msg);
+                // return NotFound();
+            }
         }
         
     }

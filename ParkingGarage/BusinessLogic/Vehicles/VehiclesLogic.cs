@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Server.IIS;
 using ParkingGarage.BusinessLogic.ParkingLot;
 using ParkingGarage.Data.Vehicle;
+using ParkingGarage.Helpers.HttpStatusException;
 using Vehicle.Ticket;
 
 namespace ParkingGarage.BusinessLogic
@@ -38,7 +42,11 @@ namespace ParkingGarage.BusinessLogic
             {
                 // there is no free lot for this ticket type
                 var msg = $"there is no free lot for this ticket type: {vehicle.Ticket}";
-                throw new Exception(msg);
+                //throw new Exception(msg);
+                
+                //throw new HttpRequestException(msg, Http);
+                throw new HttpStatusException(HttpStatusCode.BadRequest, msg);
+                
             }
 
             _vehicleRepo.CreateVehicle(vehicle);
