@@ -15,7 +15,7 @@ namespace ParkingGarage.Data.ParkingLot
         
         public List<Models.ParkingLot.ParkingLot> GetAllParkingLots()
         {
-            var sql = "SELECT * FROM parkinglots";
+            const string sql = "SELECT * FROM parkinglots";
             return _context.ParkingLots.FromSqlRaw(sql).ToList();
         }
     }

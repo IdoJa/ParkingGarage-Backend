@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ParkingGarage.BusinessLogic.ParkingLot;
 using ParkingGarage.Data.ParkingLot;
 
 namespace ParkingGarage.Controllers.ParkingLot
@@ -11,17 +12,17 @@ namespace ParkingGarage.Controllers.ParkingLot
     
     public class ParkingLotsController : ControllerBase
     {
-        private readonly IParkingLotRepo _repository;
+        private readonly ParkingLotLogic _parkingLotLogic;
 
-        public ParkingLotsController(IParkingLotRepo repository)
+        public ParkingLotsController(ParkingLotLogic parkingLotLogic)
         {
-            _repository = repository;
+            _parkingLotLogic = parkingLotLogic;
         }
         
         [HttpGet]
         public ActionResult<List<Models.ParkingLot.ParkingLot>> GetAllParkingLots()
         {
-            var commandItems = _repository.GetAllParkingLots();
+            var commandItems = _parkingLotLogic.GetAllParkingLots();
 
             return Ok(commandItems);
         }

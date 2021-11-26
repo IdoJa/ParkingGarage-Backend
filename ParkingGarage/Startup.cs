@@ -11,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using ParkingGarage.BusinessLogic;
+using ParkingGarage.BusinessLogic.ParkingLot;
 using ParkingGarage.Data;
 using ParkingGarage.Data.ParkingLot;
 using ParkingGarage.Data.Vehicle;
@@ -37,7 +39,10 @@ namespace ParkingGarage
 
             services.AddControllers();
 
+            services.AddScoped<VehicleLogic, VehicleLogic>();
             services.AddScoped<IVehicleRepo, SqlVehiclesRepo>();
+            
+            services.AddScoped<ParkingLotLogic, ParkingLotLogic>();
             services.AddScoped<IParkingLotRepo, SqlParkingLotsRepo>();
         }
 

@@ -16,7 +16,7 @@ namespace ParkingGarage.Data.Vehicle
         // returns list
         public List<global::Vehicle.Vehicle> GetAllVehicles()
         {
-            var sql = "SELECT * FROM vehicles";
+            const string sql = "SELECT * FROM vehicles";
             return _context.Vehicles.FromSqlRaw(sql).ToList();
         }
     }

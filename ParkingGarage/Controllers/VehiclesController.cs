@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ParkingGarage.BusinessLogic;
 using ParkingGarage.Data.Vehicle;
 
 namespace ParkingGarage.Controllers
@@ -10,17 +11,17 @@ namespace ParkingGarage.Controllers
     
     public class VehiclesController : ControllerBase
     {
-        private readonly IVehicleRepo _repository;
+        private readonly VehicleLogic _vehicleLogic;
 
-        public VehiclesController(IVehicleRepo repository)
+        public VehiclesController(VehicleLogic vehicleLogic)
         {
-            _repository = repository;
+            _vehicleLogic = vehicleLogic;
         }
         
         [HttpGet]
         public ActionResult<List<Vehicle.Vehicle>> GetAllVehicles()
         {
-            var commandItems = _repository.GetAllVehicles();
+            var commandItems = _vehicleLogic.GetAllVehicles();
 
             return Ok(commandItems);
         }
