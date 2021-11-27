@@ -54,17 +54,27 @@ namespace ParkingGarage.BusinessLogic
         }
 
         /// <summary>
+        /// for every Vehicle check if its class matches with ticket class list - if no dont return it
         /// example: for <see cref="Van"/> the class is "B" check if match with ticket class "Regular"
         /// in this case, no return. and there is no option to select "Regular"
         /// </summary>
         /// <param name="vehicle"></param>
-        /// <returns></returns>
-        public List<Ticket> GetAllTicketsByVehicle(Vehicle.Vehicle vehicle)
+        /// <returns>list of ticket names compatible with the vehicle given to controller</returns>
+        public List<string> GetAllTicketsNamesByVehicle(Vehicle.Vehicle vehicle)
         {
-            // for every Vehicle check if its class matches with ticket class list - if no dont return it
-            return _ticketsLogic.GetAllTickets().Where(ticket => ticket.ClassList.Contains(vehicle.Class)).ToList();
+            var ticketList = _ticketsLogic.GetAllTickets().Where(ticket => ticket.ClassList.Contains(vehicle.Class)).ToList();
+            return GetAllTicketsNames(ticketList);
         }
 
+        /// <summary>
+        /// extract the ticket name for every ticket given
+        /// </summary>
+        /// <param name="ticketList"></param>
+        /// <returns></returns>
+        private List<string> GetAllTicketsNames(List<Ticket> ticketList)
+        {
+            return ticketList.Select(ticket => nameof(ticket)).ToList();
+        } 
 
         // return valid ticket types based on selected vehicle type
         private Vehicle.Vehicle CreateVehicle(string vehicle)
