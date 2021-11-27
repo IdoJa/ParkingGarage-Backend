@@ -42,7 +42,7 @@ namespace ParkingGarage.BusinessLogic
         public void CreateVehicle(Vehicle.Vehicle vehicle)
         {
             // check vehicle class
-            var freeParkingLot = _ticketsLogic.CreateTicket(vehicle.Ticket).GetFreeParkingLot();
+            var freeParkingLot = _ticketsLogic.CreateTicketByString(vehicle.Ticket).GetFreeParkingLot();
             if (freeParkingLot == null)
             {
                 // there is no free lot for this ticket type
@@ -54,7 +54,7 @@ namespace ParkingGarage.BusinessLogic
         }
         
         // return valid ticket types based on selected vehicle type
-        private Vehicle.Vehicle CreateVehicle(string vehicle)
+        public Vehicle.Vehicle CreateVehicleByString(string vehicle)
         {
             Vehicle.Vehicle returnValue = null;
             switch (vehicle)

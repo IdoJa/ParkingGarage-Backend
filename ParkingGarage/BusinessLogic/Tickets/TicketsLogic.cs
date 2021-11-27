@@ -15,7 +15,7 @@ namespace ParkingGarage.BusinessLogic.Tickets
             _parkingLotsLogic = parkingLotsLogic;
         }
 
-        public Ticket CreateTicket(string ticket)
+        public Ticket CreateTicketByString(string ticket)
         {
             Ticket returnValue = null;
             switch (ticket)
@@ -64,7 +64,7 @@ namespace ParkingGarage.BusinessLogic.Tickets
         /// <returns></returns>
         private List<string> GetAllTicketsNames(List<Ticket> ticketList)
         {
-            return ticketList.Select(ticket => nameof(ticket)).ToList();
+            return ticketList.Select(ticket => ticket.GetType().Name).ToList();
         } 
         
     }
