@@ -37,11 +37,18 @@ namespace ParkingGarage
             services.AddDbContext<MainContext>(opt =>
                 opt.UseMySql(Configuration.GetConnectionString("Connection")));
             
-            //services.AddDbContext<ParkingLotContext>(opt =>
-            //                opt.UseMySql(Configuration.GetConnectionString("Connection")));
+            // CORS
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            services.AddCors(c => c.AddPolicy("TCAPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            }));
 
             services.AddControllers();
-
+            
+            
             services.AddScoped<VehiclesLogic, VehiclesLogic>();
             services.AddScoped<IVehicleRepo, SqlVehiclesRepo>();
             

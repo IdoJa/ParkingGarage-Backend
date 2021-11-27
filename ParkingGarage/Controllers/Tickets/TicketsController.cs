@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using ParkingGarage.BusinessLogic;
 using ParkingGarage.BusinessLogic.Tickets;
@@ -21,6 +22,7 @@ namespace ParkingGarage.Controllers.Tickets
         }
         
         // POST api/tickets
+        [EnableCors("TCAPolicy")]
         [HttpGet("{vehicleName}")]
         public ActionResult <List<string>> GetAllTicketsNamesByVehicle(string vehicleName)
         {
