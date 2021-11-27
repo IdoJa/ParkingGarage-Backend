@@ -38,8 +38,7 @@ namespace ParkingGarage
                 opt.UseMySql(Configuration.GetConnectionString("Connection")));
             
             // CORS
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
-            services.AddCors(c => c.AddPolicy("TCAPolicy", builder =>
+            services.AddCors(c => c.AddDefaultPolicy( builder =>
             {
                 builder.AllowAnyOrigin()
                     .AllowAnyMethod()
@@ -70,9 +69,12 @@ namespace ParkingGarage
 
             app.UseRouting();
 
+            app.UseCors();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+            
         }
     }
 }

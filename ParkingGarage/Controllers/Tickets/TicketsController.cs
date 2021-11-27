@@ -22,7 +22,6 @@ namespace ParkingGarage.Controllers.Tickets
         }
         
         // POST api/tickets
-        [EnableCors("TCAPolicy")]
         [HttpGet("{vehicleName}")]
         public ActionResult <List<string>> GetAllTicketsNamesByVehicle(string vehicleName)
         {
