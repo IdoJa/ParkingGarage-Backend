@@ -13,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using ParkingGarage.BusinessLogic;
 using ParkingGarage.BusinessLogic.ParkingLot;
+using ParkingGarage.BusinessLogic.Tickets;
 using ParkingGarage.Data;
 using ParkingGarage.Data.ParkingLot;
 using ParkingGarage.Data.SharedRepo;
@@ -43,6 +44,8 @@ namespace ParkingGarage
 
             services.AddScoped<VehiclesLogic, VehiclesLogic>();
             services.AddScoped<IVehicleRepo, SqlVehiclesRepo>();
+            
+            services.AddScoped<TicketsLogic, TicketsLogic>();
 
             services.AddScoped<ParkingLotsLogic, ParkingLotsLogic>();
             services.AddScoped<IParkingLotRepo, SqlParkingLotsRepo>();
