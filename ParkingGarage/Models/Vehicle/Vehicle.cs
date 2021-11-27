@@ -11,7 +11,7 @@ namespace Vehicle
         ///     May be: [A, B, C] only.
         /// </summary>
         [MaxLength(10)]
-        public string Class { get; set; }
+        public string Class { get; protected set; }
         
         /// <summary>
         ///     May be: [Vip, Value, Regular] only.

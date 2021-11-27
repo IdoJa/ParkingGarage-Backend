@@ -33,6 +33,7 @@ namespace ParkingGarage.Controllers
         }
 
         
+        // GET - api/vehicles/vehiclesNames
         [HttpGet("vehiclesNames")]
         public ActionResult<List<string>> GetVehiclesNames()
         {
