@@ -32,6 +32,14 @@ namespace ParkingGarage.Controllers
             return Ok(vehicleItem);
         }
 
+        
+        [HttpGet("vehiclesNames")]
+        public ActionResult<List<string>> GetVehiclesNames()
+        {
+            var vehiclesNames = _vehiclesLogic.GetVehiclesNames();
+            return Ok(vehiclesNames);
+        }
+
         // GET - api/vehicles/{id} - (LicensePlateId)
         [HttpGet("{id}", Name = "GetVehicleById")]
         public ActionResult<Vehicle.Vehicle> GetVehicleById(int id)

@@ -28,7 +28,7 @@ namespace ParkingGarage.Controllers.Tickets
             try
             {
                 var vehicle = _vehiclesLogic.CreateVehicleByString(vehicleName);
-                return _ticketsLogic.GetAllTicketsNamesByVehicle(vehicle);
+                return Ok(_ticketsLogic.GetAllTicketsNamesByVehicle(vehicle));
             }
             catch (HttpStatusException e)
             {

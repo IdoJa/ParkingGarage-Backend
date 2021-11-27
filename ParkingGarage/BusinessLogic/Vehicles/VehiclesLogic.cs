@@ -81,5 +81,18 @@ namespace ParkingGarage.BusinessLogic
 
             return returnValue;
         }
+
+        public List<string> GetVehiclesNames()
+        {
+            return new List<string>()
+            {
+                "Motorcycle",
+                "Private",
+                "Crossover",
+                "SUV",
+                "Van",
+                "Truck"
+            };
+        }
     }
 }
