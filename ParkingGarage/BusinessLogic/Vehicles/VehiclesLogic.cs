@@ -66,5 +66,7 @@ namespace ParkingGarage.BusinessLogic
 
             return returnValue;
         }
+        
+        // return valid ticket types based on selected vehicle type
     }
 }
