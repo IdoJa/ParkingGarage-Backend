@@ -90,7 +90,7 @@ namespace ParkingGarage.Controllers
         
         // TODO: DELETE
         // TODO: check when inserting license plate id that doesnt exist
-        [HttpDelete("{id}")]
+        [HttpDelete("{licensePlateId}")]
         public ActionResult DeleteVehicleByLicensePlateId(string licensePlateId)
         {
             try

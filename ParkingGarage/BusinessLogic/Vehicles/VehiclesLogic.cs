@@ -135,7 +135,8 @@ namespace ParkingGarage.BusinessLogic
         public void DeleteVehicleByLicensePlateId(string licensePlateId)
         {
             var vehicle = GetVehicleById(licensePlateId);
-            _parkingLotsLogic.UpdateParkingLotWithNull(vehicle.ParkingLot);
+            var parkingLot = _parkingLotsLogic.GetParkingLotByLicensePlateId(licensePlateId);
+            _parkingLotsLogic.UpdateParkingLotWithNull(parkingLot);
             _vehicleRepo.DeleteVehicle(vehicle);
         }
     }

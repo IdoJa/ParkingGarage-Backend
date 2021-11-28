@@ -31,8 +31,8 @@ namespace ParkingGarage.Data.Vehicle
 
         public void DeleteVehicle(global::Vehicle.Vehicle vehicle)
         {
-            var sql = $"DELETE FROM vehicles WHERE LicensePlateId = {vehicle.LicensePlateId}";
-            Context.Vehicles.FromSqlRaw(sql);
+            Context.Vehicles.Remove(vehicle);
+            SaveChanges();
         }
     }
 }

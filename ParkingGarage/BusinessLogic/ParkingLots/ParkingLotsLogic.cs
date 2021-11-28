@@ -17,6 +17,11 @@ namespace ParkingGarage.BusinessLogic.ParkingLot
             return _parkingLotRepo.GetAllParkingLots();
         }
 
+        public Models.ParkingLot.ParkingLot GetParkingLotByLicensePlateId(string licensePlateId)
+        {
+            return _parkingLotRepo.GetParkingLotByLicensePlateId(licensePlateId);
+        }
+
         public Models.ParkingLot.ParkingLot GetFreeParkingLotByParkingLotsIdLimits(int startId, int endId)
         {
             return _parkingLotRepo.GetFreeParkingLotByParkingLotsIdLimits(startId, endId);
@@ -31,7 +36,7 @@ namespace ParkingGarage.BusinessLogic.ParkingLot
         // update 
         public void UpdateParkingLotWithNull(Models.ParkingLot.ParkingLot parkingLot)
         {
-            _parkingLotRepo.UpdateParkingLotWithLicensePlateId(parkingLot, "NULL");
+            _parkingLotRepo.UpdateParkingLotWithNull(parkingLot);
         }
 
     }
