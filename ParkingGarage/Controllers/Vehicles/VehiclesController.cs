@@ -27,9 +27,15 @@ namespace ParkingGarage.Controllers
         [HttpGet]
         public ActionResult<List<Vehicle.Vehicle>> GetAllVehicles()
         {
-            var vehicleItem = _vehiclesLogic.GetAllVehicles();
-
-            return Ok(vehicleItem);
+            try
+            {
+                var vehicleItem = _vehiclesLogic.GetAllVehicles();
+                return Ok(vehicleItem);
+            }
+            catch (HttpStatusException e)
+            {
+                return StatusCode(e.StatusCodeResult.StatusCode, e.Msg);
+            }
         }
 
         
@@ -37,21 +43,34 @@ namespace ParkingGarage.Controllers
         [HttpGet("vehiclesNames")]
         public ActionResult<List<string>> GetVehiclesNames()
         {
-            var vehiclesNames = _vehiclesLogic.GetVehiclesNames();
-            return Ok(vehiclesNames);
+            try
+            {
+                var vehiclesNames = _vehiclesLogic.GetVehiclesNames();
+                return Ok(vehiclesNames);
+            }
+            catch (HttpStatusException e)
+            {
+                return StatusCode(e.StatusCodeResult.StatusCode, e.Msg);
+            }
         }
 
         // GET - api/vehicles/{id} - (LicensePlateId)
         [HttpGet("{id}", Name = "GetVehicleById")]
-        public ActionResult<Vehicle.Vehicle> GetVehicleById(int id)
+        public ActionResult<Vehicle.Vehicle> GetVehicleById(string id)
         {
-            var vehicleItem = _vehiclesLogic.GetVehicleById(id);
-            if (vehicleItem == null)
+            try
             {
-                return NotFound();
+                var vehicleItem = _vehiclesLogic.GetVehicleById(id);
+                if (vehicleItem == null)
+                {
+                    return NotFound();
+                }
+                return Ok(vehicleItem);
             }
-
-            return Ok(vehicleItem);
+            catch (HttpStatusException e)
+            {
+                return StatusCode(e.StatusCodeResult.StatusCode, e.Msg);
+            }
         }
 
         // POST api/vehicle
@@ -62,6 +81,22 @@ namespace ParkingGarage.Controllers
             {
                 _vehiclesLogic.CreateVehicle(vehicle);
                 return CreatedAtRoute(nameof(GetVehicleById), new {Id = vehicle.LicensePlateId}, vehicle);
+            }
+            catch (HttpStatusException e)
+            {
+                return StatusCode(e.StatusCodeResult.StatusCode, e.Msg);
+            }
+        }
+        
+        // TODO: DELETE
+        // TODO: check when inserting license plate id that doesnt exist
+        [HttpDelete("{id}")]
+        public ActionResult DeleteVehicleByLicensePlateId(string licensePlateId)
+        {
+            try
+            {
+                _vehiclesLogic.DeleteVehicleByLicensePlateId(licensePlateId);
+                return NoContent();
             }
             catch (HttpStatusException e)
             {

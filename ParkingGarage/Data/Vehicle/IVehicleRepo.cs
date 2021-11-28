@@ -6,9 +6,11 @@ namespace ParkingGarage.Data.Vehicle
     {
         List<global::Vehicle.Vehicle> GetAllVehicles();
 
-        global::Vehicle.Vehicle GetVehicleById(int id);
+        global::Vehicle.Vehicle GetVehicleById(string id);
 
         void CreateVehicle(global::Vehicle.Vehicle vehicle);
+
+        void DeleteVehicle(global::Vehicle.Vehicle vehicle);
     }
 
 }

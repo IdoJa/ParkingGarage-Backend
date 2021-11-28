@@ -33,7 +33,7 @@ namespace ParkingGarage.BusinessLogic
         }
 
         // get one vehicle
-        public Vehicle.Vehicle GetVehicleById(int id)
+        public Vehicle.Vehicle GetVehicleById(string id)
         {
             return _vehicleRepo.GetVehicleById(id);
         }
@@ -42,8 +42,6 @@ namespace ParkingGarage.BusinessLogic
         public void CreateVehicle(Vehicle.Vehicle vehicle)
         {
             Ticket ticket = _ticketsLogic.CreateTicketByString(vehicle.Ticket);
-            
-            
             
             AssertTicketDimensions(vehicle, ticket);
 
@@ -132,6 +130,13 @@ namespace ParkingGarage.BusinessLogic
                 "Van",
                 "Truck"
             };
+        }
+
+        public void DeleteVehicleByLicensePlateId(string licensePlateId)
+        {
+            var vehicle = GetVehicleById(licensePlateId);
+            _parkingLotsLogic.UpdateParkingLotWithNull(vehicle.ParkingLot);
+            _vehicleRepo.DeleteVehicle(vehicle);
         }
     }
 }

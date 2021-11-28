@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ParkingGarage.BusinessLogic.ParkingLot;
 using ParkingGarage.Data.ParkingLot;
+using ParkingGarage.Helpers.HttpStatusException;
 
 namespace ParkingGarage.Controllers.ParkingLot
 {
@@ -22,9 +24,15 @@ namespace ParkingGarage.Controllers.ParkingLot
         [HttpGet]
         public ActionResult<List<Models.ParkingLot.ParkingLot>> GetAllParkingLots()
         {
-            var commandItems = _parkingLotsLogic.GetAllParkingLots();
-
-            return Ok(commandItems);
+            try
+            {
+                var commandItems = _parkingLotsLogic.GetAllParkingLots();
+                return Ok(commandItems);
+            }
+            catch (HttpStatusException e)
+            {
+                return StatusCode(e.StatusCodeResult.StatusCode, e.Msg);
+            }
         }
         
         

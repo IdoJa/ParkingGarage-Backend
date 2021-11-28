@@ -10,6 +10,7 @@ namespace ParkingGarage.Data.ParkingLot
 
         Models.ParkingLot.ParkingLot GetFreeParkingLotByParkingLotsIdLimits(int startId, int endId);
 
-        void UpdateParkingLot(Models.ParkingLot.ParkingLot parkingLot, string licensePlateId);
+        void UpdateParkingLotWithLicensePlateId(Models.ParkingLot.ParkingLot parkingLot, string licensePlateId);
+        
     }
 }

@@ -24,11 +24,11 @@ namespace ParkingGarage.Data.ParkingLot
         }
         
 
-        public void UpdateParkingLot(Models.ParkingLot.ParkingLot parkingLot, string licensePlateId)
+        public void UpdateParkingLotWithLicensePlateId(Models.ParkingLot.ParkingLot parkingLot, string licensePlateId)
         {
             //  (NOT IMPLEMENTED)
             var sql = $"UPDATE parkinglots SET LicensePlateId = {licensePlateId} WHERE Id = {parkingLot.Id}";
-            
+            Context.ParkingLots.FromSqlRaw(sql);
         }
     }
 }
