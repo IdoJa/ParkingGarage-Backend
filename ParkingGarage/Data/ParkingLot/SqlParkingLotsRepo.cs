@@ -14,7 +14,7 @@ namespace ParkingGarage.Data.ParkingLot
         
         public List<Models.ParkingLot.ParkingLot> GetAllParkingLots()
         {
-            const string sql = "SELECT * FROM parkinglots";
+            const string sql = "SELECT * FROM parkinglots ORDER BY Id ASC";
             return Context.ParkingLots.FromSqlRaw(sql).ToList();
         }
         
