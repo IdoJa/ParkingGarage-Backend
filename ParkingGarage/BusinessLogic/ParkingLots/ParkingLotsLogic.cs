@@ -21,6 +21,14 @@ namespace ParkingGarage.BusinessLogic.ParkingLot
         {
             return _parkingLotRepo.GetFreeParkingLotByParkingLotsIdLimits(startId, endId);
         }
+        
+        // update 
+        public void UpdateParkingLotWithLicensePlateId(Models.ParkingLot.ParkingLot parkingLot, string licensePlateId)
+        {
+            
+            _parkingLotRepo.UpdateParkingLot(parkingLot);
+        }
+        
 
     }
 }

@@ -41,8 +41,27 @@ namespace ParkingGarage.BusinessLogic
         // create vehicle
         public void CreateVehicle(Vehicle.Vehicle vehicle)
         {
+            Ticket ticket = _ticketsLogic.CreateTicketByString(vehicle.Ticket);
+            
+            
+            // TODO: check for `vehicle.Dimensions` that are 
+            if (vehicle.Height > ticket.Dimensions.Height)
+            {
+                
+            }
+
+            if (vehicle.Width > ticket.Dimensions.Width)
+            {
+                
+            }
+
+            if (vehicle.Length > ticket.Dimensions.Length)
+            {
+                
+            }
+            
             // check vehicle class
-            var freeParkingLot = _ticketsLogic.CreateTicketByString(vehicle.Ticket).GetFreeParkingLot();
+            var freeParkingLot = ticket.GetFreeParkingLot();
             if (freeParkingLot == null)
             {
                 // there is no free lot for this ticket type
@@ -50,6 +69,10 @@ namespace ParkingGarage.BusinessLogic
                 throw new HttpStatusException(new BadRequestResult(), msg);
             }
 
+            vehicle.ParkingLot = freeParkingLot;
+            
+            // TODO: update parking lot with licenseplate - need to create vehicle and then update parking lot
+            
             _vehicleRepo.CreateVehicle(vehicle);
         }
         

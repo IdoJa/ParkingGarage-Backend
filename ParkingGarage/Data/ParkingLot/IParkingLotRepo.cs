@@ -1,5 +1,6 @@
 ﻿
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 
 namespace ParkingGarage.Data.ParkingLot
 {
@@ -9,5 +10,6 @@ namespace ParkingGarage.Data.ParkingLot
 
         Models.ParkingLot.ParkingLot GetFreeParkingLotByParkingLotsIdLimits(int startId, int endId);
 
+        Models.ParkingLot.ParkingLot UpdateParkingLot(Models.ParkingLot.ParkingLot parkingLot);
     }
 }

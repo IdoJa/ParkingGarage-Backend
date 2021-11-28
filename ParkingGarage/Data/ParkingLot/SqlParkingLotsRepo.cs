@@ -23,6 +23,12 @@ namespace ParkingGarage.Data.ParkingLot
             return Context.ParkingLots.FromSqlRaw(sql).FirstOrDefault();
         }
 
-
+        public Models.ParkingLot.ParkingLot UpdateParkingLot(Models.ParkingLot.ParkingLot parkingLot)
+        {
+            //  (NOT IMPLEMENTED)
+            var aparkingLot = new Models.ParkingLot.ParkingLot();
+            const string sql = "";
+            return aparkingLot;
+        }
     }
 }
