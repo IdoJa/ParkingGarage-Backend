@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Serialization;
 using ParkingGarage.BusinessLogic;
 using ParkingGarage.BusinessLogic.ParkingLot;
 using ParkingGarage.BusinessLogic.Tickets;
@@ -36,7 +37,7 @@ namespace ParkingGarage
         {
             services.AddDbContext<MainContext>(opt =>
                 opt.UseMySql(Configuration.GetConnectionString("Connection")));
-            
+
             // CORS
             services.AddCors(c => c.AddDefaultPolicy( builder =>
             {
@@ -45,7 +46,8 @@ namespace ParkingGarage
                     .AllowAnyHeader();
             }));
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(x => 
+                x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             
             
             services.AddScoped<VehiclesLogic, VehiclesLogic>();
