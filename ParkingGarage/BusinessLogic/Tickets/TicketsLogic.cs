@@ -73,7 +73,8 @@ namespace ParkingGarage.BusinessLogic.Tickets
             return GetAllTickets().Where(t =>
                 (t.Dimensions.Height >= ticket.Dimensions.Height) &&
                 (t.Dimensions.Width >= ticket.Dimensions.Width) &&
-                (t.Dimensions.Length >= ticket.Dimensions.Length) && t.GetType().Name != ticket.GetType().Name).ToList();
+                (t.Dimensions.Length >= ticket.Dimensions.Length) &&
+                (t.GetType().Name != ticket.GetType().Name)).ToList();
         }
         
     }
