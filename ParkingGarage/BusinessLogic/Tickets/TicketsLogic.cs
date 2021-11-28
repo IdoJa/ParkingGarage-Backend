@@ -65,7 +65,16 @@ namespace ParkingGarage.BusinessLogic.Tickets
         private List<string> GetAllTicketsNames(List<Ticket> ticketList)
         {
             return ticketList.Select(ticket => ticket.GetType().Name).ToList();
-        } 
+        }
+
+        public List<Ticket> OfferSubstituteTicket(Ticket ticket)
+        {
+            // check for valid dimensions for received ticket input (must be valid for every dimension property)
+            return GetAllTickets().Where(t =>
+                                       t.Dimensions.Height >= ticket.Dimensions.Height &&
+                                       t.Dimensions.Width >= ticket.Dimensions.Width &&
+                                       t.Dimensions.Length >= ticket.Dimensions.Length).ToList();
+        }
         
     }
 }

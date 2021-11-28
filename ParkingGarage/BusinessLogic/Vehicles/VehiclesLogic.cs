@@ -44,25 +44,9 @@ namespace ParkingGarage.BusinessLogic
             Ticket ticket = _ticketsLogic.CreateTicketByString(vehicle.Ticket);
             
             
-            // TODO: check for `vehicle.Dimensions` that are 
-            if (vehicle.Height > ticket.Dimensions.Height)
-            {
-                var msg = $"Vehicle Height value is too high, it should not be over than {ticket.Dimensions.Height}";
-                throw new HttpStatusException(new BadRequestResult(), msg);
-            }
-
-            if (vehicle.Width > ticket.Dimensions.Width)
-            {
-                var msg = $"Vehicle Width value is too high: it should not be over than {ticket.Dimensions.Width}";
-                throw new HttpStatusException(new BadRequestResult(), msg);
-            }
-
-            if (vehicle.Length > ticket.Dimensions.Length)
-            {
-                var msg = $"Vehicle Length value is too high: it should not be over than {ticket.Dimensions.Length}";
-                throw new HttpStatusException(new BadRequestResult(), msg);
-            }
             
+            AssertTicketDimensions(vehicle, ticket);
+
             // check vehicle class
             var freeParkingLot = ticket.GetFreeParkingLot();
             if (freeParkingLot == null)
@@ -78,7 +62,36 @@ namespace ParkingGarage.BusinessLogic
             
             _vehicleRepo.CreateVehicle(vehicle);
         }
-        
+
+        private void AssertTicketDimensions(Vehicle.Vehicle vehicle, Ticket ticket)
+        {
+            if (vehicle.Height > ticket.Dimensions.Height)
+            {
+                var msg = $"Vehicle Height value is too high, it should not be over than {ticket.Dimensions.Height}.";
+                ThrowSubstituteTicketMessage(msg, ticket);
+            }
+
+            if (vehicle.Width > ticket.Dimensions.Width)
+            {
+                var msg = $"Vehicle Width value is too high: it should not be over than {ticket.Dimensions.Width}";
+                ThrowSubstituteTicketMessage(msg, ticket);
+            }
+
+            if (vehicle.Length > ticket.Dimensions.Length)
+            {
+                var msg = $"Vehicle Length value is too high: it should not be over than {ticket.Dimensions.Length}";
+                ThrowSubstituteTicketMessage(msg, ticket);
+            }
+        }
+
+        private void ThrowSubstituteTicketMessage(string msg, Ticket ticket)
+        {
+            var offeredSubstituteTicketList = _ticketsLogic.OfferSubstituteTicket(ticket);
+            offeredSubstituteTicketList.ForEach(t =>
+                msg += " you may replace with " + t.GetType().Name + " you will have to add " + (t.Cost - ticket.Cost));
+            throw new HttpStatusException(new BadRequestResult(), msg);
+        }
+
         // return valid ticket types based on selected vehicle type
         public Vehicle.Vehicle CreateVehicleByString(string vehicle)
         {
