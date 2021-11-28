@@ -22,13 +22,13 @@ namespace ParkingGarage.Data.ParkingLot
             var sql = $"SELECT * FROM parkinglots WHERE Id >= {startId} AND Id <= {endId} AND LicensePlateId IS NULL";
             return Context.ParkingLots.FromSqlRaw(sql).FirstOrDefault();
         }
+        
 
-        public Models.ParkingLot.ParkingLot UpdateParkingLot(Models.ParkingLot.ParkingLot parkingLot)
+        public void UpdateParkingLot(Models.ParkingLot.ParkingLot parkingLot, string licensePlateId)
         {
             //  (NOT IMPLEMENTED)
-            var aparkingLot = new Models.ParkingLot.ParkingLot();
-            const string sql = "";
-            return aparkingLot;
+            var sql = $"UPDATE parkinglots SET LicensePlateId = {licensePlateId} WHERE Id = {parkingLot.Id}";
+            
         }
     }
 }

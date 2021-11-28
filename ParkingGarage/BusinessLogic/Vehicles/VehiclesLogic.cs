@@ -59,8 +59,8 @@ namespace ParkingGarage.BusinessLogic
             vehicle.ParkingLot = freeParkingLot;
             
             // TODO: update parking lot with licenseplate - need to create vehicle and then update parking lot
-            
             _vehicleRepo.CreateVehicle(vehicle);
+            _parkingLotsLogic.UpdateParkingLotWithLicensePlateId(freeParkingLot, vehicle.LicensePlateId);
         }
 
         private void AssertTicketDimensions(Vehicle.Vehicle vehicle, Ticket ticket)

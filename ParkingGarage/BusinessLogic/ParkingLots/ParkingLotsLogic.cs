@@ -25,8 +25,7 @@ namespace ParkingGarage.BusinessLogic.ParkingLot
         // update 
         public void UpdateParkingLotWithLicensePlateId(Models.ParkingLot.ParkingLot parkingLot, string licensePlateId)
         {
-            
-            _parkingLotRepo.UpdateParkingLot(parkingLot);
+            _parkingLotRepo.UpdateParkingLot(parkingLot, licensePlateId);
         }
         
 
