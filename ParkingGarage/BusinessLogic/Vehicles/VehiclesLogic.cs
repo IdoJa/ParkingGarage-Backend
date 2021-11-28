@@ -41,12 +41,7 @@ namespace ParkingGarage.BusinessLogic
         // create vehicle
         public void CreateVehicle(Vehicle.Vehicle vehicle)
         {
-            // check if license plate id already exists
-            if (GetVehicleById(vehicle.LicensePlateId) != null)
-            {
-                var msg = $"This Vehicle is already parked";
-                throw new HttpStatusException(new BadRequestResult(), msg);
-            }
+            ThrowOnLicensePlateIdExist(vehicle.LicensePlateId);
             
             Ticket ticket = _ticketsLogic.CreateTicketByString(vehicle.Ticket);
             
@@ -141,10 +136,32 @@ namespace ParkingGarage.BusinessLogic
 
         public void DeleteVehicleByLicensePlateId(string licensePlateId)
         {
+            ThrowOnLicensePlateIdDoesntExist(licensePlateId);
+
             var vehicle = GetVehicleById(licensePlateId);
             var parkingLot = _parkingLotsLogic.GetParkingLotByLicensePlateId(licensePlateId);
             _parkingLotsLogic.UpdateParkingLotWithNull(parkingLot);
             _vehicleRepo.DeleteVehicle(vehicle);
+        }
+
+        private void ThrowOnLicensePlateIdDoesntExist(string licensePlateId)
+        {
+            // check if license plate id doesnt exists
+            if (GetVehicleById(licensePlateId) == null)
+            {
+                var msg = $"This Vehicle is not parked";
+                throw new HttpStatusException(new BadRequestResult(), msg);
+            }
+        }
+        
+        private void ThrowOnLicensePlateIdExist(string licensePlateId)
+        {
+            // check if license plate id already exists
+            if (GetVehicleById(licensePlateId) != null)
+            {
+                var msg = $"This Vehicle is already parked";
+                throw new HttpStatusException(new BadRequestResult(), msg);
+            }
         }
     }
 }
