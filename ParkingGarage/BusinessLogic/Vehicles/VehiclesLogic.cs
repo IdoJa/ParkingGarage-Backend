@@ -88,7 +88,7 @@ namespace ParkingGarage.BusinessLogic
         {
             var offeredSubstituteTicketList = _ticketsLogic.OfferSubstituteTicket(ticket);
             offeredSubstituteTicketList.ForEach(t =>
-                msg += " you may replace with " + t.GetType().Name + " you will have to add " + (t.Cost - ticket.Cost));
+                msg += " You may replace with '" + t.GetType().Name + "' but will have to add " + (t.Cost - ticket.Cost) + "$.");
             throw new HttpStatusException(new BadRequestResult(), msg);
         }
 
