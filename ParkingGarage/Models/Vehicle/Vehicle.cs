@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using ParkingGarage.Models.ParkingLot;
 
 namespace Vehicle
@@ -7,10 +8,15 @@ namespace Vehicle
     {
         [Key] public string LicensePlateId { get; set; }
         
+        [MaxLength(20)]
+        public string Name { get; set; }
+        
+        [MaxLength(15)]
+        public string Phone { get; set; }
         /// <summary>
         ///     May be: [A, B, C] only.
         /// </summary>
-        [MaxLength(10)]
+        [NotMapped]
         public string Class { get; protected set; }
         
         /// <summary>

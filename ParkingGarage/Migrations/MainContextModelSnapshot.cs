@@ -38,15 +38,19 @@ namespace ParkingGarage.Migrations
                     b.Property<string>("LicensePlateId")
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
-                    b.Property<string>("Class")
-                        .HasColumnType("varchar(10) CHARACTER SET utf8mb4")
-                        .HasMaxLength(10);
-
                     b.Property<int>("Height")
                         .HasColumnType("int");
 
                     b.Property<int>("Length")
                         .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("varchar(20) CHARACTER SET utf8mb4")
+                        .HasMaxLength(20);
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("varchar(15) CHARACTER SET utf8mb4")
+                        .HasMaxLength(15);
 
                     b.Property<string>("Ticket")
                         .HasColumnType("varchar(10) CHARACTER SET utf8mb4")
