@@ -47,17 +47,20 @@ namespace ParkingGarage.BusinessLogic
             // TODO: check for `vehicle.Dimensions` that are 
             if (vehicle.Height > ticket.Dimensions.Height)
             {
-                
+                var msg = $"Vehicle Height value is too high, it should not be over than {ticket.Dimensions.Height}";
+                throw new HttpStatusException(new BadRequestResult(), msg);
             }
 
             if (vehicle.Width > ticket.Dimensions.Width)
             {
-                
+                var msg = $"Vehicle Width value is too high: it should not be over than {ticket.Dimensions.Width}";
+                throw new HttpStatusException(new BadRequestResult(), msg);
             }
 
             if (vehicle.Length > ticket.Dimensions.Length)
             {
-                
+                var msg = $"Vehicle Length value is too high: it should not be over than {ticket.Dimensions.Length}";
+                throw new HttpStatusException(new BadRequestResult(), msg);
             }
             
             // check vehicle class
