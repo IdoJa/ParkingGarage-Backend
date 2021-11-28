@@ -41,6 +41,13 @@ namespace ParkingGarage.BusinessLogic
         // create vehicle
         public void CreateVehicle(Vehicle.Vehicle vehicle)
         {
+            // check if license plate id already exists
+            if (GetVehicleById(vehicle.LicensePlateId) != null)
+            {
+                var msg = $"This Vehicle is already parked";
+                throw new HttpStatusException(new BadRequestResult(), msg);
+            }
+            
             Ticket ticket = _ticketsLogic.CreateTicketByString(vehicle.Ticket);
             
             AssertTicketDimensions(vehicle, ticket);
