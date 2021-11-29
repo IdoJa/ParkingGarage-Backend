@@ -38,7 +38,6 @@ namespace ParkingGarage.Controllers
             }
         }
 
-        
         // GET - api/vehicles/vehiclesNames
         [HttpGet("vehiclesNames")]
         public ActionResult<List<string>> GetVehiclesNames()
@@ -88,8 +87,6 @@ namespace ParkingGarage.Controllers
             }
         }
         
-        // TODO: DELETE
-        // TODO: check when inserting license plate id that doesnt exist
         [HttpDelete("{licensePlateId}")]
         public ActionResult DeleteVehicleByLicensePlateId(string licensePlateId)
         {
