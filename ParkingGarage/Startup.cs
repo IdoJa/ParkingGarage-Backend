@@ -72,6 +72,10 @@ namespace ParkingGarage
             app.UseRouting();
 
             app.UseCors();
+            
+            // TODO: check.
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
 
             app.UseAuthorization();
 

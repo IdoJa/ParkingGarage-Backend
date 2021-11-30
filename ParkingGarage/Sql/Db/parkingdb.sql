@@ -17,22 +17,22 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `parkingdb`
+-- Database: `heroku_336875001706016`
 --
-CREATE DATABASE IF NOT EXISTS `parkingdb` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `parkingdb`;
+CREATE DATABASE IF NOT EXISTS `heroku_336875001706016` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `heroku_336875001706016`;
 
 DELIMITER $$
 --
 -- Procedures
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllParkingVehiclesByTicket` (IN `ticket` VARCHAR(255))  BEGIN
+CREATE  PROCEDURE `GetAllParkingVehiclesByTicket` (IN `ticket` varchar(10))  BEGIN
 	SELECT * FROM vehicles AS V JOIN parkinglots AS P
 	ON V.licensePlateId = P.licensePlateId
     WHERE V.Ticket = ticket AND P.licensePlateId IS NOT NULL;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertParkingLots` (`size` INT)  BEGIN
+CREATE  PROCEDURE `InsertParkingLots` (`size` INT)  BEGIN
 	DECLARE counter INT DEFAULT 1;
     
     WHILE counter <= size DO
@@ -52,8 +52,8 @@ DELIMITER ;
 
 CREATE TABLE `parkinglots` (
   `Id` int(11) NOT NULL,
-  `LicensePlateId` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `LicensePlateId` varchar(10) CHARACTER SET utf8mb4 DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `parkinglots`
@@ -128,14 +128,14 @@ INSERT INTO `parkinglots` (`Id`, `LicensePlateId`) VALUES
 --
 
 CREATE TABLE `vehicles` (
-  `LicensePlateId` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+  `LicensePlateId` varchar(10) CHARACTER SET utf8mb4 NOT NULL,
   `Name` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL,
   `Phone` varchar(15) CHARACTER SET utf8mb4 DEFAULT NULL,
   `Ticket` varchar(10) CHARACTER SET utf8mb4 DEFAULT NULL,
   `Height` int(11) NOT NULL,
   `Width` int(11) NOT NULL,
   `Length` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `vehicles`
@@ -154,7 +154,7 @@ INSERT INTO `vehicles` (`LicensePlateId`, `Name`, `Phone`, `Ticket`, `Height`, `
 CREATE TABLE `__efmigrationshistory` (
   `MigrationId` varchar(95) NOT NULL,
   `ProductVersion` varchar(32) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `__efmigrationshistory`

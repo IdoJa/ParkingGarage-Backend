@@ -28,16 +28,5 @@ namespace Vehicle
         public int Width { get; set; }
         public int Length { get; set; }
         public ParkingLot ParkingLot { get; set; }
-
-        // public override string ToString()
-        // {
-        //     return
-        //         $"{nameof(LicensePlateId)}: {LicensePlateId}," +
-        //         $" {nameof(Name)}: {Name}, {nameof(Phone)}: {Phone}," +
-        //         $" {nameof(Class)}: {Class}, {nameof(Ticket)}: {Ticket}," +
-        //         $" {nameof(Height)}: {Height}, {nameof(Width)}: {Width}," +
-        //         $" {nameof(Length)}: {Length}," +
-        //         $" {nameof(ParkingLot)}: {ParkingLot}";
-        // }
     }
 }

@@ -12,6 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Frontend" />
       <Folder Include="Migrations" />
     </ItemGroup>
 

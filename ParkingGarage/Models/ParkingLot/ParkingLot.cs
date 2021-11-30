@@ -11,12 +11,5 @@ namespace ParkingGarage.Models.ParkingLot
         [ForeignKey("Vehicle")]
         public string LicensePlateId { get; set; }
         public Vehicle.Vehicle Vehicle { get; set; }
-
-        // public override string ToString()
-        // {
-        //     return $"{nameof(Id)}: {Id}, " +
-        //            $"{nameof(LicensePlateId)}: {LicensePlateId}, " +
-        //            $"{nameof(Vehicle)}: {Vehicle}";
-        // }
     }
 }
