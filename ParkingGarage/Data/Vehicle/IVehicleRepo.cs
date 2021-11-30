@@ -11,6 +11,8 @@ namespace ParkingGarage.Data.Vehicle
         void CreateVehicle(global::Vehicle.Vehicle vehicle);
 
         void DeleteVehicle(global::Vehicle.Vehicle vehicle);
+        
+        List<global::Vehicle.Vehicle> GetAllParkingVehiclesByTicket(string ticketName);
     }
 
 }

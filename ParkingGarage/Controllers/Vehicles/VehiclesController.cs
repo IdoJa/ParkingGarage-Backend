@@ -100,5 +100,20 @@ namespace ParkingGarage.Controllers
                 return StatusCode(e.StatusCodeResult.StatusCode, e.Msg);
             }
         }
+        
+        // GET - api/vehicles/ticket
+        [HttpGet("ticket/{ticketName}")]
+        public ActionResult<List<Vehicle.Vehicle>> GetAllParkingVehiclesByTicket(string ticketName)
+        {
+            try
+            {
+                var vehiclesList = _vehiclesLogic.GetAllParkingVehiclesByTicket(ticketName);
+                return Ok(vehiclesList);
+            }
+            catch (HttpStatusException e)
+            {
+                return StatusCode(e.StatusCodeResult.StatusCode, e.Msg);
+            }
+        }
     }
 }

@@ -161,5 +161,10 @@ namespace ParkingGarage.BusinessLogic
                 throw new HttpStatusException(new BadRequestResult(), msg);
             }
         }
+
+        public List<Vehicle.Vehicle> GetAllParkingVehiclesByTicket(string ticketName)
+        {
+            return _vehicleRepo.GetAllParkingVehiclesByTicket(ticketName);
+        }
     }
 }

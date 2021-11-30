@@ -34,5 +34,11 @@ namespace ParkingGarage.Data.Vehicle
             Context.Vehicles.Remove(vehicle);
             SaveChanges();
         }
+
+        public List<global::Vehicle.Vehicle> GetAllParkingVehiclesByTicket(string ticketName)
+        {
+            var sql = $"CALL GetAllParkingVehiclesByTicket('{ticketName}')";
+            return Context.Vehicles.FromSqlRaw(sql).ToList();
+        }
     }
 }

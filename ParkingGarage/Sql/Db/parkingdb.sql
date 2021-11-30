@@ -17,18 +17,19 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `heroku_336875001706016`
+-- Database: `xhltopuxjch6ox31`
 --
-CREATE DATABASE IF NOT EXISTS `heroku_336875001706016` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `heroku_336875001706016`;
+CREATE DATABASE IF NOT EXISTS `xhltopuxjch6ox31` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `xhltopuxjch6ox31`;
 
 DELIMITER $$
 --
 -- Procedures
 --
 CREATE  PROCEDURE `GetAllParkingVehiclesByTicket` (IN `ticket` varchar(10))  BEGIN
-	SELECT * FROM vehicles AS V JOIN parkinglots AS P
-	ON V.licensePlateId = P.licensePlateId
+    SELECT V.LicensePlateId, V.Name, V.Phone, V.Ticket, V.Height, V.Width, V.Length, P.Id AS Lot
+    FROM vehicles AS V JOIN parkinglots AS P
+    ON V.licensePlateId = P.licensePlateId
     WHERE V.Ticket = ticket AND P.licensePlateId IS NOT NULL;
 END$$
 
