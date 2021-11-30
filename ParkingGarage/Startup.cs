@@ -73,7 +73,7 @@ namespace ParkingGarage
 
             app.UseCors();
             
-            // TODO: check.
+            // Uses the `wwwroot` folder as static files for production.
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
