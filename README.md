@@ -1,5 +1,5 @@
 ﻿# Parking Garage
-## Deployed to Heroku: https://ido-ja-parking.herokuapp.com/
+## Deployed to Heroku: https://ido-ja-parking.herokuapp.com
 > Implementation of a Parking Garage Management System that will allow the user
 > to check in and check out a vehicle according to demands.
 
